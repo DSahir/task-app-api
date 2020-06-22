@@ -69,9 +69,10 @@ router.post('/user/logoutall', auth , async(req ,res)=>{
 // })
 router.get('/user/me' , auth ,async (req , res)=>{
     try{
-        res.send(user)
+        const user = auth.user
+        res.status(200).send({user})
     }catch(e){
-        res.status(400).send()
+        res.status(400).send('User not found')
     }
 })
 //:id is express route hansler
