@@ -1,5 +1,7 @@
 const express = require('express')
 require('./db/mongoose')
+const multer = require('multer')
+
 
 // const User = require('./models/user')
 // const Task = require('./models/tasks')
@@ -10,7 +12,10 @@ const { update, findById } = require('./models/user')
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
 
-
+// const upload = multer({
+//     dest:'images'
+// })
+// app.post('/upload')
 const app = express()
 //middleware
 // app.use((req,res ,next)=>{
