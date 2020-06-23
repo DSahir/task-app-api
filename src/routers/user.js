@@ -70,7 +70,7 @@ router.post('/user/logoutall', auth , async(req ,res)=>{
 router.get('/user/me' , auth ,async (req , res)=>{
     try{
         const user = auth.user
-        res.status(200).send({user})
+        res.status(200).send(req.user)
     }catch(e){
         res.status(400).send('User not found')
     }
@@ -117,13 +117,13 @@ router.get('/user/me' , auth ,async (req , res)=>{
 
 router.patch('/user/me',auth , async(req,res)=>{
     const upd = Object.keys(req.body)
-    const allowedkeys=['name' ,  'age','email','password']
-    const isvalid = upd.every((upd)=> allowedkeys.includes(upd))    
+    const allowedkeys=['name','age','email','password']
+    const isvalid = upd.every((upd)=> allowedkeys.includes(upd))  
     if(!isvalid){
         return res.status(400).send('Invalid update')
     }
     try{
-        upd.ForEach((element) => req.user[element] = req.body[element])
+        upd.forEach((element) => {req.user[element] = req.body[element]})  
         await req.user.save()
         res.send(req.user)
     }catch(e){
@@ -175,7 +175,7 @@ router.post('/user/me/avatar',auth , upload.single('avatar') , async (req, res)=
 
 router.delete('/user/me/avatar',auth , async (req,res)=>{
     req.user.avatar = undefined
-    await req.save()
+    await req.user.save()
     res.send()
 })
 

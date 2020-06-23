@@ -1,22 +1,24 @@
-const express = require('express')
-require('./db/mongoose')
-const multer = require('multer')
+const app = require('./app')
+
+// const express = require('express')
+// require('./db/mongoose')
+// const multer = require('multer')
 
 
-// const User = require('./models/user')
-// const Task = require('./models/tasks')
+// // const User = require('./models/user')
+// // const Task = require('./models/tasks')
 
-const { ObjectID } = require('mongodb')
-const { update, findById } = require('./models/user')
+// const { ObjectID } = require('mongodb')
+// const { update, findById } = require('./models/user')
 
-const userRouter = require('./routers/user')
-const taskRouter = require('./routers/task')
+// const userRouter = require('./routers/user')
+// const taskRouter = require('./routers/task')
 
 // const upload = multer({
 //     dest:'images'
 // })
 // app.post('/upload')
-const app = express()
+// const app = express()
 //middleware
 // app.use((req,res ,next)=>{
 //     console.log(req.method , req.path)
@@ -34,9 +36,9 @@ const app = express()
 //         res.status(503).send('Site under maintainance')
 // })
 
-app.use(express.json())
-app.use(userRouter)
-app.use(taskRouter)
+// app.use(express.json())
+// app.use(userRouter)
+// app.use(taskRouter)
 
 // const router = new express.Router()
 // router.get('/test' , (req ,res)=>{
